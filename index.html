@@ -470,21 +470,23 @@ body { background:var(--bg); color:var(--ink); font-family:'DM Sans',sans-serif;
 }
 
 .phone-watch {
-  margin-top: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  border-radius: 2px;
+  margin-top: 10px;
+  display: inline-block;
   text-decoration: none;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 5px;
-  color: rgba(234,229,220,0.45);
-  border-top: 1px solid rgba(234,229,220,0.12);
-  padding-top: 7px;
-  letter-spacing: 0.5px;
-  transition: color 0.2s;
+  transition: background 0.2s;
 }
 
-.phone-watch:hover { color: var(--cream); }
+.phone-watch:hover {
+  background: rgba(255,255,255,0.25);
+}
 
 .card-desc {
   padding: 0 4px;
