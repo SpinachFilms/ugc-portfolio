@@ -433,6 +433,34 @@ body { background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; f
   transform: scale(1.04);
 }
 
+.video-facade {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(10,6,5,0.6);
+  border: 1px solid rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.video-facade:hover .video-play-btn {
+  background: var(--rust);
+}
+
 .phone-overlay {
   position: absolute;
   inset: 0;
@@ -883,13 +911,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/M_XeRWaEGOc?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="M_XeRWaEGOc" onclick="playVideo(this)">
+              <img src="./images/CharlieAndCo1BilloThumbnail.png" alt="Charlie and Co">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -903,13 +928,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/Ta85sLuFuQ4?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="Ta85sLuFuQ4" onclick="playVideo(this)">
+              <img src="./images/CharlieAndCo2BilloThumbnail.png" alt="Charlie and Co 2">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -923,13 +945,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/8MirVcTTu9s?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="8MirVcTTu9s" onclick="playVideo(this)">
+              <img src="./images/Pelvini1BilloThumbnail.png" alt="Pelvini">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -954,13 +973,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/zZY0l0UFhfw?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="zZY0l0UFhfw" onclick="playVideo(this)">
+              <img src="./images/Sunglasses1BilloThumbnail.png" alt="SA106 Meta">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -974,13 +990,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/oQteXn31czg?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="oQteXn31czg" onclick="playVideo(this)">
+              <img src="./images/Vinted2BilloThumbnail.png" alt="Vinted">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1005,13 +1018,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/wKU0fu3AETk?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="wKU0fu3AETk" onclick="playVideo(this)">
+              <img src="./images/Natura2BilloThumbnail.png" alt="Naturas">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1025,13 +1035,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/mFkh5W0BaNQ?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="mFkh5W0BaNQ" onclick="playVideo(this)">
+              <img src="./images/Natura1BilloThumbnail.png" alt="Naturas 2">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1056,13 +1063,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/NWK43vzy35E?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="NWK43vzy35E" onclick="playVideo(this)">
+              <img src="./images/MondaySurf1BilloThumbnail.png" alt="Monday Surf">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1076,13 +1080,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/3QPYM9b-OdA?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="3QPYM9b-OdA" onclick="playVideo(this)">
+              <img src="./images/OliWorksMeteorite1BilloThumbnail.png" alt="OliWorks">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1096,13 +1097,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/lviGT1OySXU?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="lviGT1OySXU" onclick="playVideo(this)">
+              <img src="./images/HiLifeSoona1Thumbnail.png" alt="HiLife">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1127,13 +1125,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/J5_0hTdLpRc?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="J5_0hTdLpRc" onclick="playVideo(this)">
+              <img src="./images/NOCO1BilloThumbnail.png" alt="NOCO">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1147,13 +1142,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/Gum5ziP2kwU?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="Gum5ziP2kwU" onclick="playVideo(this)">
+              <img src="./images/BatteryTenderBillo1Thumbnail.png" alt="Battery Tender">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1178,13 +1170,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/MlJPgQ_M13Y?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="MlJPgQ_M13Y" onclick="playVideo(this)">
+              <img src="./images/ADA1BilloThumbnail.png" alt="ADA Legal">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1198,13 +1187,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/nLreFd4WWK4?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="nLreFd4WWK4" onclick="playVideo(this)">
+              <img src="./images/OneParkFinancial1BilloThumbnail.png" alt="One Park Financial">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1218,13 +1204,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/fC2J62vOTOk?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="fC2J62vOTOk" onclick="playVideo(this)">
+              <img src="./images/OneParkFinancial2BilloThumbnail.png" alt="One Park Financial">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1238,13 +1221,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/22RR3g5sz_8?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="22RR3g5sz_8" onclick="playVideo(this)">
+              <img src="./images/OneParkFinancial3BilloThumbnail.png" alt="One Park Financial">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1258,13 +1238,10 @@ footer {
           <div class="phone-frame"></div>
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/-e7YHQHTxhw?modestbranding=1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="width:100%; height:100%; border-radius:24px; object-fit:cover;">
-            </iframe>
+            <div class="video-facade" data-video-id="-e7YHQHTxhw" onclick="playVideo(this)">
+              <img src="./images/OneParkFinancial4BilloThumbnail.png" alt="One Park Financial">
+              <div class="video-play-btn">▶</div>
+            </div>
           </div>
         </div>
         <div class="card-desc">
@@ -1365,5 +1342,20 @@ footer {
 </footer>
 
 </div>
+
+<script>
+function playVideo(el) {
+  const vid = el.getAttribute('data-video-id');
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.youtube.com/embed/${vid}?modestbranding=1&autoplay=1`;
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.borderRadius = '24px';
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+  iframe.setAttribute('allowfullscreen', '');
+  el.replaceWith(iframe);
+}
+</script>
 </body>
 </html>
