@@ -74,12 +74,11 @@ a { color:inherit; }
 }
 .brand-mark { font-family:'Inter',sans-serif; font-weight:700; font-size:13px; letter-spacing:1px; }
 .controls-right { display:flex; gap:10px; align-items:center; }
-.lang-toggle { display:flex; border:1px solid var(--border); border-radius:20px; overflow:hidden; }
-.lang-toggle button {
+.contact-cta {
   font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.5px;
-  padding:6px 12px; background:transparent; color:var(--text-muted); border:none; cursor:pointer;
+  padding:6px 14px; background:var(--amber); color:var(--ink); border-radius:20px;
+  text-decoration:none; display:inline-flex; align-items:center;
 }
-.lang-toggle button[aria-pressed="true"] { background:var(--amber); color:var(--ink); }
 .theme-toggle {
   font-family:'Inter',sans-serif; font-size:11px; font-weight:600;
   border:1px solid var(--border); border-radius:20px; padding:6px 14px;
@@ -267,10 +266,7 @@ footer { padding:32px 0 48px; display:flex; justify-content:space-between; font-
 <div class="top-controls">
   <span class="brand-mark">PAULO LOYO</span>
   <div class="controls-right">
-    <div class="lang-toggle" role="group" aria-label="Select content language">
-      <button type="button" aria-pressed="true" data-lang="en">EN</button>
-      <button type="button" aria-pressed="false" data-lang="es">ES</button>
-    </div>
+    <a href="#contact" class="contact-cta">Contact</a>
     <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode">Light mode</button>
   </div>
 </div>
@@ -653,7 +649,7 @@ footer { padding:32px 0 48px; display:flex; justify-content:space-between; font-
   </section>
 
   <!-- CONTACT -->
-  <section class="contact-section">
+  <section class="contact-section" id="contact">
     <div class="sec-eyebrow" style="color:var(--amber);">Contact</div>
     <div class="contact-top">
       <div>
@@ -703,21 +699,6 @@ footer { padding:32px 0 48px; display:flex; justify-content:space-between; font-
     root.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     syncBtn();
-  });
-})();
-
-(function() {
-  var buttons = document.querySelectorAll('.lang-toggle button');
-  var cards = document.querySelectorAll('.phone-card');
-  buttons.forEach(function(b) {
-    b.addEventListener('click', function() {
-      buttons.forEach(function(o) { o.setAttribute('aria-pressed', 'false'); });
-      b.setAttribute('aria-pressed', 'true');
-      var lang = b.getAttribute('data-lang');
-      cards.forEach(function(c) {
-        c.style.display = (lang === 'en' || c.getAttribute('data-lang') === lang) ? '' : 'none';
-      });
-    });
   });
 })();
 
