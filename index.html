@@ -72,7 +72,7 @@ a { color:inherit; }
   background:var(--bg);
   border-bottom:1px solid var(--border);
 }
-.brand-mark { font-family:'Inter',sans-serif; font-weight:700; font-size:13px; letter-spacing:1px; }
+.brand-mark { font-family:'Inter',sans-serif; font-weight:700; font-size:13px; letter-spacing:1px; color:var(--text); text-decoration:none; }
 .controls-right { display:flex; gap:10px; align-items:center; }
 .contact-cta {
   font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.5px;
@@ -264,8 +264,9 @@ footer { padding:32px 0 48px; display:flex; justify-content:space-between; font-
 <a href="#portfolio" class="skip-link">Skip to portfolio</a>
 
 <div class="top-controls">
-  <span class="brand-mark">PAULO LOYO</span>
+  <a href="#about" class="brand-mark" aria-label="Go to About section">PAULO LOYO</a>
   <div class="controls-right">
+    <a href="#portfolio" class="contact-cta">Videos</a>
     <a href="#contact" class="contact-cta">Contact</a>
     <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode">Light mode</button>
   </div>
@@ -331,7 +332,7 @@ footer { padding:32px 0 48px; display:flex; justify-content:space-between; font-
   </section>
 
   <!-- ABOUT -->
-  <section class="section">
+  <section class="section" id="about">
     <div class="sec-eyebrow">About</div>
     <h2 class="sec-title">About <em>Paulo</em></h2>
     <div class="about-grid">
