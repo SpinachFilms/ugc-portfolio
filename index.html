@@ -3,1407 +3,774 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paulo Loyo — UGC Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Paulo Loyo — UGC Creator</title>
+<meta name="description" content="Paulo Loyo — Bilingual UGC creator and video producer. 53% brand repost rate. English and Spanish content for fashion, lifestyle, tech, and food brands.">
+<meta property="og:title" content="Paulo Loyo — UGC Creator">
+<meta property="og:description" content="Bilingual UGC creator with a 53% brand repost rate. English and Spanish.">
+<meta property="og:image" content="./images/Cover_selfie.jpg">
+<meta property="og:url" content="https://spinachfilms.github.io/ugc-portfolio/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --rust:   #a25839;
-  --orange: #d24611;
-  --stone:  #8b837c;
-  --cream:  #eae5dc;
-  --ink:    #0a0605;
-  --white:  #f5f1ea;
-  --border: rgba(139,131,124,0.22);
-  --bg:     #eae5dc;
-  --bg2:    #ddd8ce;
+  --ink: #0E0E0E;
+  --cream: #F4F3EF;
+  --stone: #888680;
+  --amber: #D4A843;
+  --green: #2F6B4F;
+  --border: rgba(244,243,239,0.14);
+  --bg: #0E0E0E;
+  --bg2: #161614;
+  --surface: #1A1A18;
+  --text: #F4F3EF;
+  --text-muted: #A8A6A0;
+}
+
+html[data-theme="light"] {
+  --border: rgba(14,14,14,0.12);
+  --bg: #F4F3EF;
+  --bg2: #EAE8E1;
+  --surface: #FFFFFF;
+  --text: #0E0E0E;
+  --text-muted: #5A5852;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; font-weight:300; }
-.page { max-width:960px; margin:0 auto; background:var(--bg); }
+body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-weight:400; transition:background 0.2s, color 0.2s; }
+.page { max-width:1200px; margin:0 auto; padding:0 32px; }
+img { max-width:100%; }
+a { color:inherit; }
 
-/* ─── COVER ─── */
-.cover {
-  padding: 52px 64px 48px;
-  border-bottom: 1px solid var(--border);
-  position: relative;
+.visually-hidden, .sr-only {
+  position:absolute; width:1px; height:1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap;
 }
 
-.cover-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 52px;
+.skip-link {
+  position:absolute; left:-9999px; top:0;
+  background:var(--amber); color:var(--ink);
+  padding:12px 20px; font-weight:600; z-index:1000;
+  font-family:'Inter',sans-serif;
+}
+.skip-link:focus {
+  left:0; position:fixed;
 }
 
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+*:focus:not(:focus-visible) { outline: none; }
+
+/* ─── TOP CONTROLS ─── */
+.top-controls {
+  position:sticky; top:0; z-index:50;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 32px; max-width:1200px; margin:0 auto;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+}
+.brand-mark { font-family:'Inter',sans-serif; font-weight:700; font-size:13px; letter-spacing:1px; }
+.controls-right { display:flex; gap:10px; align-items:center; }
+.lang-toggle { display:flex; border:1px solid var(--border); border-radius:20px; overflow:hidden; }
+.lang-toggle button {
+  font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.5px;
+  padding:6px 12px; background:transparent; color:var(--text-muted); border:none; cursor:pointer;
+}
+.lang-toggle button[aria-pressed="true"] { background:var(--amber); color:var(--ink); }
+.theme-toggle {
+  font-family:'Inter',sans-serif; font-size:11px; font-weight:600;
+  border:1px solid var(--border); border-radius:20px; padding:6px 14px;
+  background:transparent; color:var(--text); cursor:pointer; letter-spacing:0.5px;
+}
+
+/* ─── TICKER ─── */
+.ticker-wrap {
+  overflow:hidden; border-bottom:1px solid var(--border); padding:16px 0;
+  background:var(--bg2);
+}
+.ticker-track {
+  display:flex; gap:48px; white-space:nowrap;
+  animation: ticker 22s linear infinite;
+  font-family:'Inter',sans-serif; font-size:13px; font-weight:500; letter-spacing:1px;
+  color:var(--text-muted); text-transform:uppercase;
+  width:max-content;
+}
+@keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation-play-state: paused; }
+}
+
+/* ─── HERO ─── */
+.hero { padding:64px 0 48px; }
 .cover-tag {
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px;
-  color: var(--stone);
-  letter-spacing: 1px;
+  font-family:'Inter',sans-serif; font-size:13px; color:var(--amber);
+  letter-spacing:1px; font-weight:600; margin-bottom:20px;
 }
-
-.cover-tag.accent { color: var(--rust); }
-
-.cover-hero {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 52px;
-  align-items: center;
-  margin-bottom: 52px;
+.hero-headline {
+  font-family:'DM Serif Display', serif; font-style:italic;
+  font-size:clamp(40px, 6vw, 72px); line-height:1.05;
+  margin-bottom:24px; max-width:880px;
 }
-
-.cover-text {}
-
-.cover-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px;
-  color: var(--rust);
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.hero-sub {
+  font-family:'Inter',sans-serif; font-size:16px; color:var(--text-muted);
+  margin-bottom:40px; max-width:600px;
 }
-
-.cover-label::after {
-  content: '';
-  width: 32px;
-  height: 1px;
-  background: var(--rust);
-}
-
-.cover-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(52px, 7vw, 84px);
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -2px;
-  color: var(--ink);
-  margin-bottom: 6px;
-}
-
-.cover-name-italic {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(44px, 6vw, 72px);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 0.9;
-  letter-spacing: -1px;
-  color: var(--rust);
-  margin-bottom: 28px;
-}
-
-.cover-tagline {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--stone);
-  margin-bottom: 32px;
-  max-width: 320px;
-}
-
-.cover-langs {
-  display: flex;
-  gap: 8px;
-}
-
-.lang-pill {
-  font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  padding: 6px 12px;
-  border: 1px solid var(--rust);
-  color: var(--rust);
-  letter-spacing: 1px;
-}
-
-.cover-photo-wrap {
-  position: relative;
-}
-
+.hero-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:center; }
 .cover-photo {
-  width: 100%;
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  clip-path: polygon(0 0, 100% 0, 100% 92%, 80% 100%, 0 100%);
+  aspect-ratio:3/4; overflow:hidden; border:1px solid var(--border); border-radius:4px;
 }
+.cover-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
 
-.cover-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  filter: contrast(1.03);
+.stats-grid {
+  display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
+  background:var(--border); border:1px solid var(--border); margin-top:8px;
 }
-
-.cover-photo-label {
-  position: absolute;
-  bottom: -1px;
-  left: 0; right: 0;
-  background: var(--ink);
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cpl-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px;
-  color: var(--cream);
-  letter-spacing: 1px;
-}
-
-.cpl-handle {
-  font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  color: var(--rust);
-  letter-spacing: 1px;
-}
-
-.cover-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-}
-
-.cstat {
-  background: var(--white);
-  padding: 20px 16px;
-  text-align: center;
-}
-
-.cstat-num {
-  font-family: 'Outfit', sans-serif;
-  font-size: 16px;
-  color: var(--orange);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.cstat-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  color: var(--stone);
-  letter-spacing: 0.3px;
-}
-
-/* ─── REPOST STRIP ─── */
-.repost-strip {
-  background: var(--ink);
-  padding: 14px 64px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.rs-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  color: var(--rust);
-  letter-spacing: 1px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.rs-sep {
-  width: 1px;
-  height: 14px;
-  background: rgba(234,229,220,0.15);
-  flex-shrink: 0;
-}
-
-.rs-items {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.rs-item {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: rgba(234,229,220,0.7);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.rs-item::before {
-  content: '✓';
-  color: var(--orange);
-  font-size: 10px;
-  font-weight: 700;
-}
+.stat { background:var(--surface); padding:20px 14px; text-align:center; }
+.stat dt { font-family:'Inter',sans-serif; font-size:10px; color:var(--text-muted); letter-spacing:0.3px; margin-bottom:8px; }
+.stat dd { font-family:'Inter',sans-serif; font-size:22px; font-weight:700; }
+.stat.primary dd { color:var(--amber); }
+@media (max-width:768px) { .stats-grid { grid-template-columns:repeat(2,1fr); } .hero-grid { grid-template-columns:1fr; } }
 
 /* ─── SECTION ─── */
-.section {
-  padding: 72px 64px;
-  border-bottom: 1px solid var(--border);
-}
+.section { padding:64px 0; border-bottom:1px solid var(--border); }
+.sec-eyebrow { font-family:'Inter',sans-serif; font-size:12px; color:var(--amber); letter-spacing:1px; font-weight:600; margin-bottom:8px; }
+.sec-title { font-family:'Inter',sans-serif; font-size:clamp(26px,4vw,36px); font-weight:600; margin-bottom:40px; }
+.sec-title em { font-style:normal; color:var(--amber); }
+.fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.4s ease-out, transform 0.4s ease-out; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
 
-.sec-eyebrow {
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px;
-  color: var(--rust);
-  letter-spacing: 1px;
-  margin-bottom: 8px;
+/* ─── BILINGUAL MODULE ─── */
+.bilingual-section {
+  padding:56px 0; border-bottom:1px solid var(--border);
 }
-
-.sec-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 300;
-  letter-spacing: -0.5px;
-  line-height: 1.05;
-  margin-bottom: 48px;
+html[data-theme="light"] .bilingual-section { background:#FDF8EC; }
+html:not([data-theme="light"]) .bilingual-section { background:#1A1506; }
+.bilingual-section .page-inner { max-width:1200px; margin:0 auto; padding:0 32px; }
+.bilingual-note { font-family:'Inter',sans-serif; font-size:13px; color:var(--text-muted); margin-top:28px; max-width:620px; }
+.bilingual-examples { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:32px; }
+@media (max-width:768px) { .bilingual-examples { grid-template-columns:1fr; } }
+.bil-card {
+  border:1px solid var(--border); background:var(--surface); padding:16px; border-radius:6px;
+  display:flex; flex-direction:column; gap:6px;
 }
-
-.sec-title em {
-  font-style: italic;
-  color: var(--rust);
-}
+.bil-card .bil-brand { font-weight:600; font-size:14px; }
+.bil-card .bil-desc { font-size:12px; color:var(--text-muted); line-height:1.6; }
 
 /* ─── ABOUT ─── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 52px;
-  align-items: start;
+.about-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:52px; align-items:start; }
+@media (max-width:768px) { .about-grid { grid-template-columns:1fr; } }
+.about-photo { aspect-ratio:3/4; overflow:hidden; border:1px solid var(--border); border-radius:4px; }
+.about-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+.about-right { display:flex; flex-direction:column; gap:28px; }
+.about-bio { font-size:15px; line-height:1.85; color:var(--text-muted); }
+.about-bio strong { color:var(--text); font-weight:600; }
+.mini-label { font-family:'Inter',sans-serif; font-size:12px; color:var(--amber); letter-spacing:1px; font-weight:600; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+.niches { display:flex; flex-wrap:wrap; gap:6px; }
+.niche { font-size:11px; padding:4px 10px; border:1px solid var(--border); color:var(--text-muted); border-radius:14px; }
+.info-list { font-size:13px; color:var(--text-muted); line-height:1.8; }
+.info-list strong { color:var(--text); font-weight:600; }
+
+/* ─── CATEGORY / VIDEOS ─── */
+.cat-section { margin-bottom:56px; }
+.cat-section:last-child { margin-bottom:0; }
+.cat-header { display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border); }
+.cat-num { font-size:13px; color:var(--amber); letter-spacing:1px; }
+.cat-title { font-size:20px; font-weight:600; letter-spacing:-0.3px; }
+.cat-count { font-size:11px; color:var(--text-muted); margin-left:auto; }
+.videos-row { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+@media (max-width:768px) { .videos-row { grid-template-columns:1fr; } }
+@media (max-width:1024px) and (min-width:769px) { .videos-row { grid-template-columns:repeat(2,1fr); } }
+
+.phone-card { display:flex; flex-direction:column; gap:14px; }
+.video-card-btn {
+  position:relative; width:100%; aspect-ratio:9/16; border-radius:18px; overflow:hidden;
+  border:1px solid var(--border); background:var(--surface); padding:0; cursor:pointer; display:block;
 }
-
-.about-photo {
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-.about-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-.about-right { display: flex; flex-direction: column; gap: 28px; }
-
-.about-bio {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.85;
-  color: var(--stone);
-}
-
-.about-bio strong { color: var(--ink); font-weight: 600; }
-
-.mini-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px;
-  color: var(--rust);
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
-}
-
-.niches {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.niche {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  color: var(--stone);
-}
-
-.info-list {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: var(--stone);
-  line-height: 1.8;
-}
-
-.info-list strong { color: var(--ink); font-weight: 600; }
-
-/* ─── CATEGORY SECTION ─── */
-.cat-section {
-  margin-bottom: 56px;
-}
-
-.cat-section:last-child { margin-bottom: 0; }
-
-.cat-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
-}
-
-.cat-num {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  color: var(--orange);
-  letter-spacing: 1px;
-}
-
-.cat-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--ink);
-  letter-spacing: -0.3px;
-}
-
-.cat-count {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: var(--stone);
-  margin-left: auto;
-}
-
-.videos-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-/* ─── PHONE MOCKUP ─── */
-.phone-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.phone-mockup {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 9/19;
-}
-
-.phone-frame {
-  position: absolute;
-  inset: 0;
-  border-radius: 28px;
-  border: 3px solid var(--ink);
-  background: transparent;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(10,6,5,0.18);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.phone-notch {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 10px;
-  background: var(--ink);
-  border-radius: 0 0 8px 8px;
-  z-index: 3;
-}
-
-.phone-screen {
-  position: absolute;
-  inset: 3px;
-  border-radius: 26px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.phone-screen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.phone-card:hover .phone-screen img {
-  transform: scale(1.04);
-}
-
-.video-facade {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+.video-card-btn img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.2s; }
+.video-card-btn:hover img, .video-card-btn:focus-visible img { transform:scale(1.04); }
+.video-card-btn:hover, .video-card-btn:focus-visible { border-color:var(--amber); }
 
 .video-play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(10,6,5,0.6);
-  border: 1px solid rgba(255,255,255,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-size: 16px;
-  transition: background 0.2s;
+  position:absolute; bottom:14px; right:14px; width:40px; height:40px; border-radius:50%;
+  background:rgba(14,14,14,0.65); color:#fff; display:flex; align-items:center; justify-content:center;
+  font-size:14px; pointer-events:none;
 }
 
-.video-facade:hover .video-play-btn {
-  background: var(--rust);
+.badge-repost, .badge-amazon {
+  position:absolute; top:10px; left:10px;
+  font-family:'Inter',sans-serif; font-size:10px; font-weight:700;
+  padding:4px 9px; border-radius:20px; letter-spacing:0.3px; pointer-events:none;
 }
+.badge-repost { background:var(--amber); color:var(--ink); }
+.badge-amazon { background:var(--green); color:#fff; top:36px; }
 
-.video-repost-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 10px;
-  padding: 3px 6px;
-  background: var(--orange);
-  color: var(--cream);
-  letter-spacing: 0.5px;
-}
+.card-desc { display:flex; flex-direction:column; gap:4px; }
+.card-desc-head { display:flex; gap:8px; align-items:baseline; }
+.card-desc-num { font-size:11px; color:var(--text-muted); }
+.card-desc-type { font-size:12px; font-weight:600; color:var(--amber); }
+.card-desc-text { font-size:12.5px; color:var(--text-muted); line-height:1.6; }
 
-.video-amazon-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 10px;
-  padding: 3px 6px;
-  background: #232f3e;
-  color: #ff9900;
-  letter-spacing: 0.5px;
-}
-
-.phone-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10,6,5,0.9) 0%, transparent 60%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 16px;
-}
-
-.phone-brand {
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--cream);
-  line-height: 1.1;
-}
-
-.phone-type {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  color: rgba(234,229,220,0.55);
-  margin-top: 2px;
-  letter-spacing: 0.3px;
-}
-
-.phone-repost {
-  margin-top: 6px;
-  display: inline-block;
-  font-family: 'Outfit', sans-serif;
-  font-size: 10px;
-  padding: 3px 6px;
-  background: var(--orange);
-  color: var(--cream);
-  letter-spacing: 0.5px;
-}
-
-.phone-watch {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  letter-spacing: 1px;
-  padding: 8px 14px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.4);
-  color: white;
-  border-radius: 2px;
-  margin-top: 10px;
-  display: inline-block;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.phone-watch:hover {
-  background: rgba(255,255,255,0.25);
-}
-
-.card-desc {
-  padding: 0 4px;
-}
-
-.card-desc-num {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  color: var(--rust);
-  margin-bottom: 6px;
-}
-
-.card-desc-type {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-
-.card-desc-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: var(--stone);
-  line-height: 1.6;
-}
-
-/* ─── BRANDS ─── */
-.brands-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-}
-
-.brand-card {
-  background: var(--white);
-  padding: 20px 16px;
-  text-align: center;
-}
-
-.brand-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-
-.brand-cat {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  color: var(--stone);
-}
-
-.brand-repost {
-  margin-top: 8px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  color: var(--orange);
-  border-top: 1px solid var(--border);
-  padding-top: 6px;
-}
+/* ─── BRANDS GRID ─── */
+.brands-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:40px; }
+@media (max-width:768px) { .brands-grid { grid-template-columns:repeat(2,1fr); } }
+.brand-card { background:var(--surface); padding:16px; }
+.brand-name { font-weight:600; font-size:13px; margin-bottom:4px; }
+.brand-cat { font-size:11px; color:var(--text-muted); margin-bottom:6px; }
+.brand-repost { font-size:10px; font-weight:700; color:var(--amber); }
 
 /* ─── GEAR ─── */
-.gear-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-}
-
-.gear-card {
-  background: var(--white);
-  padding: 22px 26px;
-  display: flex;
-  gap: 14px;
-}
-
-.gear-n {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  color: var(--rust);
-  flex-shrink: 0;
-  padding-top: 2px;
-}
-
-.gear-name {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 3px;
-}
-
-.gear-desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: var(--stone);
-  line-height: 1.5;
-}
+.gear-intro { font-size:14px; color:var(--text-muted); max-width:640px; margin-bottom:36px; line-height:1.7; }
+.gear-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+@media (max-width:768px) { .gear-grid { grid-template-columns:1fr; } }
+.gear-card { background:var(--surface); padding:22px; display:flex; gap:16px; }
+.gear-n { font-size:13px; color:var(--amber); font-weight:700; flex-shrink:0; }
+.gear-name { font-weight:600; font-size:14px; margin-bottom:4px; }
+.gear-desc { font-size:12px; color:var(--text-muted); line-height:1.6; }
 
 /* ─── CONTACT ─── */
-.contact-section {
-  background: var(--ink);
-  padding: 72px 64px;
-  color: var(--cream);
-}
+.contact-section { padding:64px 0; }
+.contact-headline { font-family:'Inter',sans-serif; font-size:clamp(26px,4vw,38px); font-weight:600; margin-bottom:16px; }
+.contact-headline em { color:var(--amber); font-style:normal; }
+.contact-sub { font-size:14px; color:var(--text-muted); max-width:520px; line-height:1.7; margin-bottom:14px; }
+.contact-rate-note { font-size:12px; color:var(--text-muted); margin-bottom:24px; }
+.contact-top { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+@media (max-width:768px) { .contact-top { grid-template-columns:1fr; gap:32px; } }
+.contact-links { display:flex; flex-direction:column; gap:18px; }
+.contact-link { text-decoration:none; display:block; border-bottom:1px solid var(--border); padding-bottom:14px; }
+.cl-label { font-size:11px; color:var(--text-muted); margin-bottom:4px; letter-spacing:0.5px; }
+.cl-value { font-size:15px; font-weight:600; }
 
-.contact-top {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: start;
-  margin-bottom: 48px;
-}
+footer { padding:32px 0 48px; display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted); letter-spacing:0.5px; }
 
-.contact-headline {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(36px, 5vw, 58px);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.5px;
+/* ─── VIDEO MODAL ─── */
+#video-modal {
+  border:none; border-radius:12px; padding:0; background:var(--surface); color:var(--text);
+  width:min(420px, 90vw); max-height:90vh;
 }
-
-.contact-headline em {
-  font-style: italic;
-  color: var(--rust);
+#video-modal::backdrop { background:rgba(0,0,0,0.75); }
+.modal-inner { position:relative; }
+.modal-close {
+  position:absolute; top:8px; right:8px; z-index:5; width:34px; height:34px; border-radius:50%;
+  background:rgba(14,14,14,0.7); color:#fff; border:none; font-size:16px; cursor:pointer;
 }
-
-.contact-sub {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: rgba(234,229,220,0.55);
-  line-height: 1.7;
-  margin-top: 16px;
-}
-
-.contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.contact-link {
-  background: rgba(234,229,220,0.04);
-  border: 1px solid rgba(234,229,220,0.08);
-  padding: 20px 24px;
-  text-decoration: none;
-  display: block;
-  transition: background 0.2s;
-}
-
-.contact-link:hover { background: rgba(234,229,220,0.08); }
-
-.cl-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  color: var(--rust);
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-.cl-value {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: var(--cream);
-}
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--ink);
-  border-top: 1px solid rgba(234,229,220,0.08);
-  padding: 22px 64px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-brand {
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  color: var(--cream);
-  letter-spacing: 2px;
-}
-
-.footer-copy {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  color: var(--stone);
-}
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 800px) {
-  .cover, .section, .contact-section { padding: 48px 28px; }
-  .repost-strip { padding: 14px 28px; }
-  footer { padding: 20px 28px; }
-  .cover-hero { grid-template-columns: 1fr; gap: 36px; }
-  .cover-stats { grid-template-columns: repeat(2,1fr); }
-  .about-grid { grid-template-columns: 1fr; }
-  .videos-row { grid-template-columns: repeat(2,1fr); }
-  .brands-grid { grid-template-columns: repeat(2,1fr); }
-  .gear-grid { grid-template-columns: 1fr; }
-  .contact-top { grid-template-columns: 1fr; gap: 32px; }
-  footer { flex-direction: column; gap: 8px; text-align: center; }
-}
-
-@media (max-width: 500px) {
-  .videos-row { grid-template-columns: 1fr; }
-}
+.video-embed { aspect-ratio:9/16; width:100%; }
+.video-embed iframe { width:100%; height:100%; border:none; }
+#modal-title { padding:14px 16px 0; font-size:14px; font-weight:600; }
 </style>
 </head>
 <body>
+<a href="#portfolio" class="skip-link">Skip to portfolio</a>
+
+<div class="top-controls">
+  <span class="brand-mark">PAULO LOYO</span>
+  <div class="controls-right">
+    <div class="lang-toggle" role="group" aria-label="Select content language">
+      <button type="button" aria-pressed="true" data-lang="en">EN</button>
+      <button type="button" aria-pressed="false" data-lang="es">ES</button>
+    </div>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode">Light mode</button>
+  </div>
+</div>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Charlie &amp; Co</span><span>·</span><span>Natura's</span><span>·</span><span>Monday Surf</span><span>·</span><span>NOCO</span><span>·</span><span>HiLife</span><span>·</span><span>BoxBotl</span><span>·</span><span>SplitPay</span><span>·</span>
+    <span>Charlie &amp; Co</span><span>·</span><span>Natura's</span><span>·</span><span>Monday Surf</span><span>·</span><span>NOCO</span><span>·</span><span>HiLife</span><span>·</span><span>BoxBotl</span><span>·</span><span>SplitPay</span><span>·</span>
+  </div>
+</div>
+<ul class="sr-only" aria-label="Brands Paulo has worked with">
+  <li>Charlie and Co</li><li>Natura's</li><li>Monday Surf</li><li>NOCO</li><li>HiLife</li><li>BoxBotl</li><li>SplitPay</li>
+  <li>SA106 Meta</li><li>Vinted</li><li>OliWorks</li><li>ADA Legal</li><li>One Park Financial</li><li>Pelvini</li>
+  <li>Battery Tender</li><li>RidgeCrest Herbals</li><li>Upright</li><li>Planfit</li>
+</ul>
+
 <div class="page">
 
-<!-- COVER -->
-<section class="cover">
-  <div class="cover-topbar">
-    <span class="cover-tag">Paulo Loyo · 2025</span>
-    <span class="cover-tag accent">UGC Creator</span>
-  </div>
-
-  <div class="cover-hero">
-    <div class="cover-text">
-      <div class="cover-label">Creative Portfolio</div>
-      <div class="cover-name">Paulo</div>
-      <div class="cover-name-italic">Loyo</div>
-      <p class="cover-tagline">Bilingual UGC creator and video producer making brand content in English and Spanish — fashion, lifestyle, tech, and food.</p>
-      <div class="cover-langs">
-        <span class="lang-pill">EN</span>
-        <span class="lang-pill">ES</span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="cover-tag">Bilingual UGC Creator &amp; Video Producer</p>
+        <h1 class="visually-hidden">Paulo Loyo</h1>
+        <p class="hero-headline">The creator brands ask back.</p>
+        <p class="hero-sub">Bilingual UGC · English &amp; Spanish · Fashion · Lifestyle · Tech · Food</p>
+        <dl class="stats-grid">
+          <div class="stat primary"><dt>Brand repost rate</dt><dd aria-label="53 percent">53%</dd></div>
+          <div class="stat"><dt>Videos delivered</dt><dd>23+</dd></div>
+          <div class="stat"><dt>Brand collabs</dt><dd>17</dd></div>
+          <div class="stat"><dt>Official reposts</dt><dd>9</dd></div>
+          <div class="stat"><dt>Languages</dt><dd>2</dd></div>
+        </dl>
       </div>
-    </div>
-    <div class="cover-photo-wrap">
       <div class="cover-photo">
-        <img src="./images/Cover_selfie.jpg" alt="Paulo Loyo">
-      </div>
-      <div class="cover-photo-label">
-        <span class="cpl-name">Paulo Loyo</span>
-        <span class="cpl-handle">@Espinaaca</span>
+        <img src="./images/Cover_selfie.jpg" alt="Paulo Loyo, UGC creator and filmmaker, in streetwear" width="600" height="800" loading="lazy">
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="cover-stats">
-    <div class="cstat"><div class="cstat-num">23+</div><div class="cstat-label">Videos Approved</div></div>
-    <div class="cstat"><div class="cstat-num">17</div><div class="cstat-label">Brand Collabs</div></div>
-    <div class="cstat"><div class="cstat-num">9</div><div class="cstat-label">Brand Reposts</div></div>
-    <div class="cstat"><div class="cstat-num">2</div><div class="cstat-label">Languages</div></div>
-  </div>
-</section>
+  <!-- BILINGUAL MODULE -->
+  <section id="bilingual" class="bilingual-section" aria-labelledby="bilingual-heading">
+    <div class="page-inner">
+      <div class="sec-eyebrow">Specialty</div>
+      <h2 id="bilingual-heading" class="sec-title">Bilingual by <em>default</em></h2>
+      <p class="hero-sub" style="margin-bottom:0;">Not as an add-on. Every campaign is available in English, Spanish, or both — same quality, same turnaround, one creator.</p>
+      <div class="bilingual-examples">
+        <div class="bil-card">
+          <span class="bil-brand">ADA Legal</span>
+          <span class="bil-desc" lang="es">Talking head profesional en español. Guion estructurado, entrega clara.</span>
+        </div>
+        <div class="bil-card">
+          <span class="bil-brand">Upright</span>
+          <span class="bil-desc" lang="es">Testimonial en español para el entrenador de postura Upright.</span>
+        </div>
+        <div class="bil-card">
+          <span class="bil-brand">Vinted</span>
+          <span class="bil-desc" lang="es">Recorrido de app en español con enmascaramiento de pantalla.</span>
+        </div>
+      </div>
+      <p class="bilingual-note">Ideal for brands targeting US Hispanic markets, Latin American audiences, or bilingual communities.</p>
+    </div>
+  </section>
 
-<!-- REPOST STRIP -->
-<div class="repost-strip">
-  <span class="rs-label">Featured by brands</span>
-  <div class="rs-sep"></div>
-  <div class="rs-items">
-    <span class="rs-item">Natura's reposted both videos</span>
-    <span class="rs-item">Charlie &amp; Co. reposted both videos</span>
-    <span class="rs-item">Monday Surf reposted lifestyle</span>
-    <span class="rs-item">HiLife reposted garment steamer content</span>
-    <span class="rs-item">NOCO reposted Genius1 demo</span>
-    <span class="rs-item">BoxBotl reposted tumbler unboxing</span>
-    <span class="rs-item">SplitPay reposted World Cup talking head</span>
-  </div>
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="sec-eyebrow">About</div>
+    <h2 class="sec-title">About <em>Paulo</em></h2>
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="./images/Profile_picture.jpg" alt="Paulo Loyo headshot" width="500" height="667" loading="lazy">
+      </div>
+      <div class="about-right">
+        <p class="about-bio">I'm Paulo — a video producer and bilingual content creator based in Tennessee. My background is in filmmaking: I plan intentionally, shoot with professional gear, and edit in Premiere Pro with a director's eye. In English and in Spanish.<br><br>In my first month, four brands reposted my content on their official channels. Since then, <strong>53% of my brand collabs have resulted in a repost</strong> — not because I copy what's trending, but because I make content that actually fits a brand's voice.</p>
+        <div>
+          <div class="mini-label">Niches</div>
+          <div class="niches">
+            <span class="niche">Fashion</span><span class="niche">Lifestyle</span><span class="niche">Tech</span><span class="niche">Food</span><span class="niche">Grooming</span><span class="niche">Jewelry</span><span class="niche">Automotive</span><span class="niche">Apps</span><span class="niche">Health &amp; Wellness</span>
+          </div>
+        </div>
+        <div>
+          <div class="mini-label">Content Styles</div>
+          <p class="info-list">Talking head · Voiceover · Unboxing<br>Lifestyle B-roll · Product close-ups<br>Comedy &amp; storytelling · Screen masking<br>Outfit showcase · On-camera performance</p>
+        </div>
+        <div>
+          <div class="mini-label">Audience</div>
+          <p class="info-list">US-based · Ages 18–34<br><strong>Strong Latino &amp; Hispanic segment</strong><br>Ideal for brands targeting both English and Spanish-speaking markets</p>
+        </div>
+        <div>
+          <div class="mini-label">TikTok · @Espinaaca</div>
+          <p class="info-list">3K+ likes · Best video: 3,938 views · Avg: 250–300 views per video</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <div class="sec-eyebrow">Portfolio</div>
+    <h2 class="sec-title">Selected <em>Work</em></h2>
+
+    <div class="cat-section">
+      <div class="cat-header">
+        <span class="cat-num" aria-hidden="true">01</span>
+        <h3 class="cat-title">Luxury &amp; Jewelry</h3>
+        <span class="cat-count">3 videos</span>
+      </div>
+      <div class="videos-row">
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Charlie and Co — Storytelling, Mother's Day gift narrative with cinematic jewelry close-ups" data-video-id="M_XeRWaEGOc">
+            <img src="./images/CharlieAndCo1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">01</span><span class="card-desc-type">Storytelling · Voiceover</span></div><p class="card-desc-text">Mother's Day gift narrative. Emotional hook paired with cinematic jewelry close-ups.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Charlie and Co — Storytelling, Cross pendant showcase with cinematic close-ups" data-video-id="Ta85sLuFuQ4">
+            <img src="./images/CharlieAndCo2BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">02</span><span class="card-desc-type">Storytelling · Voiceover</span></div><p class="card-desc-text">Cross pendant showcase. Cinematic close-ups, voiceover storytelling, warm lighting.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Pelvini — Lifestyle On-Camera, Full body luxury accessories showcase" data-video-id="8MirVcTTu9s">
+            <img src="./images/Pelvini1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">03</span><span class="card-desc-type">Lifestyle · On-Camera</span></div><p class="card-desc-text">Full body luxury accessories showcase. Chain, watch, and bracelet styling with ambient lighting.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header">
+        <span class="cat-num" aria-hidden="true">02</span>
+        <h3 class="cat-title">Fashion</h3>
+        <span class="cat-count">3 videos</span>
+      </div>
+      <div class="videos-row">
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: SA106 Meta — Lifestyle On-Camera, Outdoor fashion shoot, live on Amazon listing" data-video-id="zZY0l0UFhfw">
+            <img src="./images/Sunglasses1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-amazon">Live on Amazon ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">04</span><span class="card-desc-type">Lifestyle · On-Camera</span></div><p class="card-desc-text">Outdoor fashion shoot. Natural light, brick wall, full outfit showcase with eyewear hero.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Vinted — Lifestyle On-Camera, App lifestyle content" data-video-id="POeb_zM4HNE">
+            <img src="./images/Vinted1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">05</span><span class="card-desc-type">Lifestyle · On-Camera</span></div><p class="card-desc-text">App lifestyle content showcasing the Vinted marketplace, direct to camera delivery.</p></div>
+        </div>
+        <div class="phone-card" data-lang="es">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Vinted — Screen Masking, Spanish app walkthrough" data-video-id="oQteXn31czg">
+            <img src="./images/Vinted2BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">06</span><span class="card-desc-type" lang="es">Screen Masking · Spanish</span></div><p class="card-desc-text" lang="es">App walkthrough in Spanish with screen masking. Talking head + live app demo.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header">
+        <span class="cat-num" aria-hidden="true">03</span>
+        <h3 class="cat-title">Food</h3>
+        <span class="cat-count">2 videos</span>
+      </div>
+      <div class="videos-row">
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Natura's — Comedy Storytelling, Latina mom concept viral format" data-video-id="wKU0fu3AETk">
+            <img src="./images/Natura2BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">07</span><span class="card-desc-type">Comedy · Storytelling</span></div><p class="card-desc-text">Latina mom concept. Viral format, bilingual captions, natural kitchen environment.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Natura's — Lifestyle Kitchen, Cooking with product" data-video-id="mFkh5W0BaNQ">
+            <img src="./images/Natura1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">08</span><span class="card-desc-type">Lifestyle · Kitchen</span></div><p class="card-desc-text">Cooking with product. Casual lifestyle format, wide kitchen shot, product integrated naturally.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header">
+        <span class="cat-num" aria-hidden="true">04</span>
+        <h3 class="cat-title">Lifestyle &amp; Grooming</h3>
+        <span class="cat-count">4 videos</span>
+      </div>
+      <div class="videos-row">
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Monday Surf — Unboxing Talking Head, High energy product reveal" data-video-id="NWK43vzy35E">
+            <img src="./images/MondaySurf1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">09</span><span class="card-desc-type">Unboxing · Talking Head</span></div><p class="card-desc-text">High energy product reveal. Low angle selfie, product front and center, genuine reaction.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: OliWorks — Product Demo Talking Head, Premium razor close-up demo" data-video-id="3QPYM9b-OdA">
+            <img src="./images/OliWorksMeteorite1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">10</span><span class="card-desc-type">Product Demo · Talking Head</span></div><p class="card-desc-text">Premium razor close-up demo. Product detail shots, on-camera talking head.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: HiLife — Product Demo In-Store, Portable garment steamer discovery" data-video-id="lviGT1OySXU">
+            <img src="./images/HiLifeSoona1Thumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">11</span><span class="card-desc-type">Product Demo · In-Store</span></div><p class="card-desc-text">In-store product discovery for a portable garment steamer. Genuine reaction, retail aisle setting.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: BoxBotl — Unboxing Lifestyle, World's first square tumbler" data-video-id="DY3VzWZH_c4">
+            <img src="./images/BoxBotl1Thumbnail.jpeg" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">12</span><span class="card-desc-type">Unboxing · Lifestyle</span></div><p class="card-desc-text">Unboxing and lifestyle content for the world's first square tumbler, featuring the BoxStraw™, leak-proof demo, and outdoor lifestyle shots.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header">
+        <span class="cat-num" aria-hidden="true">05</span>
+        <h3 class="cat-title">Tech &amp; Automotive</h3>
+        <span class="cat-count">2 videos</span>
+      </div>
+      <div class="videos-row">
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: NOCO — Product Demo Storytelling, Real vehicle demo and feature walkthrough" data-video-id="J5_0hTdLpRc">
+            <img src="./images/NOCO1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">13</span><span class="card-desc-type">Product Demo · Storytelling</span></div><p class="card-desc-text">Personal hook — "this is my lifesaver." Unboxing, real vehicle demo, feature walkthrough.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Battery Tender — Product Demo Outdoor, Real engine bay product demo" data-video-id="Gum5ziP2kwU">
+            <img src="./images/BatteryTenderBillo1Thumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">14</span><span class="card-desc-type">Product Demo · Outdoor</span></div><p class="card-desc-text">Real engine bay product demo. Battery charger connected to truck, clamps visible, authentic outdoor shoot.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header">
+        <span class="cat-num" aria-hidden="true">06</span>
+        <h3 class="cat-title">Professional Talking Heads</h3>
+        <span class="cat-count">6 videos</span>
+      </div>
+      <div class="videos-row">
+        <div class="phone-card" data-lang="es">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: ADA Legal — Talking Head Spanish, Professional legal services ad" data-video-id="MlJPgQ_M13Y">
+            <img src="./images/ADA1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">15</span><span class="card-desc-type" lang="es">Talking Head · Spanish</span></div><p class="card-desc-text" lang="es">Professional legal services ad in Spanish. Scripted content, clean delivery, B-roll cut-ins.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: One Park Financial — Talking Head English, Confident delivery direct to camera" data-video-id="nLreFd4WWK4">
+            <img src="./images/OneParkFinancial1BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">16</span><span class="card-desc-type">Talking Head · English</span></div><p class="card-desc-text">Professional talking head in black suit. World map background, confident delivery, direct to camera.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: One Park Financial — Talking Head English, Fireplace and stone wall set" data-video-id="fC2J62vOTOk">
+            <img src="./images/OneParkFinancial2BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">17</span><span class="card-desc-type">Talking Head · English</span></div><p class="card-desc-text">Fireplace and stone wall set. Two finger hook, structured script delivery.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: One Park Financial — Talking Head English, Full world map background" data-video-id="22RR3g5sz_8">
+            <img src="./images/OneParkFinancial3BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">18</span><span class="card-desc-type">Talking Head · English</span></div><p class="card-desc-text">Full world map background, open hands, natural conversational delivery.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: One Park Financial — Talking Head English, Home studio setup with Inspire frame" data-video-id="-e7YHQHTxhw">
+            <img src="./images/OneParkFinancial4BilloThumbnail.png" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">19</span><span class="card-desc-type">Talking Head · English</span></div><p class="card-desc-text">Home studio setup with Inspire frame. Warm, approachable energy, direct hook to camera.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: SplitPay — Talking Head English, World Cup themed talking head for rent-splitting app" data-video-id="tia5h7c9tqk">
+            <img src="./images/SplitPay1BilloThumbnail.jpeg" alt="" width="360" height="640" loading="lazy">
+            <span class="badge-repost">Reposted ✓</span>
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">20</span><span class="card-desc-type">Talking Head · English</span></div><p class="card-desc-text">World Cup themed talking head for a rent-splitting app. Casual home setup, direct hook to camera.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header">
+        <span class="cat-num" aria-hidden="true">07</span>
+        <h3 class="cat-title">Health &amp; Wellness</h3>
+        <span class="cat-count">3 videos</span>
+      </div>
+      <div class="videos-row">
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: RidgeCrest Herbals — Testimonial English, Clear Lungs Extra Strength herbal formula" data-video-id="FagVZW0UPmo">
+            <img src="./images/RidgeCrest1BilloThumbnail.jpeg" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">21</span><span class="card-desc-type">Testimonial · English</span></div><p class="card-desc-text">UGC video for RidgeCrest Herbals' Clear Lungs Extra Strength herbal formula. Authentic testimonial format.</p></div>
+        </div>
+        <div class="phone-card" data-lang="es">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Upright — Testimonial Spanish, Smart posture trainer" data-video-id="7aEFoevUFCE">
+            <img src="./images/Upright1BilloThumbnail.jpeg" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">22</span><span class="card-desc-type" lang="es">Testimonial · Spanish</span></div><p class="card-desc-text" lang="es">Spanish-language UGC video for Upright's smart posture trainer. Testimonial + product demo format.</p></div>
+        </div>
+        <div class="phone-card" data-lang="en">
+          <button type="button" class="video-card-btn" role="button" aria-label="Play: Planfit — Transformation English, AI-powered gym coaching app" data-video-id="rQLfRpbA5XI">
+            <img src="./images/Planfit1BilloThumbnail.jpeg" alt="" width="360" height="640" loading="lazy">
+            <span class="video-play-btn" aria-hidden="true">▶</span>
+          </button>
+          <div class="card-desc"><div class="card-desc-head"><span class="card-desc-num" aria-hidden="true">23</span><span class="card-desc-type">Transformation · English</span></div><p class="card-desc-text">Transformation story UGC for Planfit's AI-powered gym coaching app. Before/after format with in-gym product demo.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRANDS -->
+    <div class="mini-label" style="margin-top:48px;">All Brands</div>
+    <div class="brands-grid">
+      <div class="brand-card"><div class="brand-name">Charlie &amp; Co.</div><div class="brand-cat">Luxury Jewelry</div><div class="brand-repost">Reposted ✓</div></div>
+      <div class="brand-card"><div class="brand-name">Natura's</div><div class="brand-cat">Food &amp; Beverage</div><div class="brand-repost">Reposted ✓</div></div>
+      <div class="brand-card"><div class="brand-name">Monday Surf</div><div class="brand-cat">Grooming · Lifestyle</div><div class="brand-repost">Reposted ✓</div></div>
+      <div class="brand-card"><div class="brand-name">NOCO</div><div class="brand-cat">Tech · Automotive</div><div class="brand-repost">Reposted ✓</div></div>
+      <div class="brand-card"><div class="brand-name">SA106 Meta</div><div class="brand-cat">Fashion · Eyewear</div><div class="brand-repost">Live on Amazon ✓</div></div>
+      <div class="brand-card"><div class="brand-name">Vinted</div><div class="brand-cat">Fashion · App</div><div class="brand-repost">&nbsp;</div></div>
+      <div class="brand-card"><div class="brand-name">OliWorks</div><div class="brand-cat">Grooming · Razors</div><div class="brand-repost">&nbsp;</div></div>
+      <div class="brand-card"><div class="brand-name">ADA Legal</div><div class="brand-cat">Legal Services</div><div class="brand-repost">&nbsp;</div></div>
+      <div class="brand-card"><div class="brand-name">One Park Financial</div><div class="brand-cat">Financial Services</div><div class="brand-repost">&nbsp;</div></div>
+      <div class="brand-card"><div class="brand-name">Pelvini</div><div class="brand-cat">Luxury · Jewelry</div><div class="brand-repost">&nbsp;</div></div>
+      <div class="brand-card"><div class="brand-name">HiLife</div><div class="brand-cat">Home · Appliances</div><div class="brand-repost">Reposted ✓</div></div>
+      <div class="brand-card"><div class="brand-name">Battery Tender</div><div class="brand-cat">Tech · Automotive</div><div class="brand-repost">&nbsp;</div></div>
+      <div class="brand-card"><div class="brand-name">BoxBotl</div><div class="brand-cat">Drinkware · Lifestyle</div><div class="brand-repost">Reposted ✓</div></div>
+      <div class="brand-card"><div class="brand-name">SplitPay</div><div class="brand-cat">Finance · App</div><div class="brand-repost">Reposted ✓</div></div>
+      <div class="brand-card"><div class="brand-name">RidgeCrest Herbals</div><div class="brand-cat">Health · Wellness</div><div class="brand-repost">&nbsp;</div></div>
+      <div class="brand-card"><div class="brand-name">Upright</div><div class="brand-cat">Health · Tech</div><div class="brand-repost">&nbsp;</div></div>
+      <div class="brand-card"><div class="brand-name">Planfit</div><div class="brand-cat">Fitness · App</div><div class="brand-repost">&nbsp;</div></div>
+    </div>
+  </section>
+
+  <!-- SETUP / GEAR -->
+  <section class="section">
+    <div class="sec-eyebrow">Setup</div>
+    <h2 class="sec-title">What you're actually <em>getting</em></h2>
+    <p class="gear-intro">This isn't an iPhone-and-ring-light setup. Every video is planned, lit, and edited to a professional standard — with AI in the toolkit when it serves the concept.</p>
+    <div class="gear-grid">
+      <div class="gear-card"><div class="gear-n" aria-hidden="true">01</div><div><div class="gear-name">Sony ZV-1</div><div class="gear-desc">Cinematic footage · Manual exposure · Cine2 · 1080p 60fps</div></div></div>
+      <div class="gear-card"><div class="gear-n" aria-hidden="true">02</div><div><div class="gear-name">iPhone 16 Pro</div><div class="gear-desc">4K video · Cinematic mode · Primary UGC filming</div></div></div>
+      <div class="gear-card"><div class="gear-n" aria-hidden="true">03</div><div><div class="gear-name">Dracast DRX1000RGB</div><div class="gear-desc">Professional RGB panel · Full color control · Studio quality</div></div></div>
+      <div class="gear-card"><div class="gear-n" aria-hidden="true">04</div><div><div class="gear-name">GreatLPT Tubes ×2</div><div class="gear-desc">RGB tubes for rim, accent, and cinematic background lighting</div></div></div>
+      <div class="gear-card"><div class="gear-n" aria-hidden="true">05</div><div><div class="gear-name">Adobe Premiere Pro</div><div class="gear-desc">Professional editing · Color grading · Motion graphics</div></div></div>
+      <div class="gear-card"><div class="gear-n" aria-hidden="true">06</div><div><div class="gear-name">AI Toolkit</div><div class="gear-desc">Sora · Midjourney · Krea · ElevenLabs · AI-enhanced production</div></div></div>
+      <div class="gear-card"><div class="gear-n" aria-hidden="true">07</div><div><div class="gear-name">3 Dedicated Sets</div><div class="gear-desc">Fashion gallery wall · Kitchen island · Creative studio — all professionally lit</div></div></div>
+      <div class="gear-card"><div class="gear-n" aria-hidden="true">08</div><div><div class="gear-name">Adobe Photoshop</div><div class="gear-desc">Photo editing · Product retouching · Thumbnail creation</div></div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="sec-eyebrow" style="color:var(--amber);">Contact</div>
+    <div class="contact-top">
+      <div>
+        <h2 class="contact-headline">Let's make something <em>brands repost.</em></h2>
+        <p class="contact-sub">Available for brand collabs and UGC campaigns. Fast turnaround. Professional delivery. English and Spanish.</p>
+        <p class="contact-rate-note">Deliverables, whitelisting, and usage rights available. Rates on request.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:spinachfilms@gmail.com" class="contact-link" aria-label="Email Paulo Loyo"><div class="cl-label">Email</div><div class="cl-value">Email Paulo</div></a>
+        <a href="https://www.tiktok.com/@Espinaaca" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="View Paulo's TikTok @Espinaaca"><div class="cl-label">TikTok</div><div class="cl-value">TikTok @Espinaaca</div></a>
+        <div class="contact-link"><div class="cl-label">Languages</div><div class="cl-value">English · Español</div></div>
+        <div class="contact-link"><div class="cl-label">Location</div><div class="cl-value">Tennessee, US · Remote Worldwide</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>PAULO LOYO</span>
+    <span>UGC Creator · Video Producer · 2026</span>
+  </footer>
+
 </div>
 
-<!-- ABOUT -->
-<section class="section">
-  <div class="sec-eyebrow">01 — About</div>
-  <h2 class="sec-title">Who I <em>Am</em></h2>
-  <div class="about-grid">
-    <div class="about-photo">
-      <img src="./images/Profile_picture.jpg" alt="Paulo Loyo">
-    </div>
-    <div class="about-right">
-      <div>
-        <div class="mini-label">Bio</div>
-        <p class="about-bio">I'm Paulo — a <strong>bilingual content creator and video producer</strong> based in Tennessee. I plan everything intentionally but never stop being creative. I've been coding since I was young, I love being outdoors with a camera, and editing is where both worlds meet.<br><br>My content spans <strong>fashion, lifestyle, tech, and food</strong> — shot with professional gear and edited with a filmmaker's eye. In my first month, four brands reposted my content on their official channels.</p>
-      </div>
-      <div>
-        <div class="mini-label">Niches</div>
-        <div class="niches">
-          <span class="niche">Fashion</span><span class="niche">Lifestyle</span><span class="niche">Tech</span><span class="niche">Food</span><span class="niche">Grooming</span><span class="niche">Jewelry</span><span class="niche">Automotive</span><span class="niche">Apps</span>
-        </div>
-      </div>
-      <div>
-        <div class="mini-label">Content Types</div>
-        <p class="info-list">Talking head · Voiceover · Unboxing<br>Lifestyle B-roll · Product close-ups<br>Comedy &amp; storytelling · Screen masking<br>Outfit showcase · On-camera performance</p>
-      </div>
-      <div>
-        <div class="mini-label">Audience</div>
-        <p class="info-list">US-based · Ages 18–34<br><strong>Strong Latino &amp; Hispanic segment</strong><br>Ideal for brands targeting both English and Spanish-speaking markets</p>
-      </div>
-      <div>
-        <div class="mini-label">TikTok · @Espinaaca</div>
-        <p class="info-list">170+ followers · 3K+ likes<br>Best video: 3,938 views · Avg: 250–300 views</p>
-      </div>
-    </div>
+<dialog id="video-modal" aria-labelledby="modal-title">
+  <div class="modal-inner">
+    <button type="button" class="modal-close" id="modal-close-btn" autofocus aria-label="Close video">✕</button>
+    <h2 id="modal-title" class="visually-hidden">Video player</h2>
+    <div class="video-embed" id="video-embed"></div>
   </div>
-</section>
-
-<!-- WORK -->
-<section class="section">
-  <div class="sec-eyebrow">02 — Work</div>
-  <h2 class="sec-title">Brand <em>Campaigns</em></h2>
-
-  <!-- LUXURY & JEWELRY -->
-  <div class="cat-section">
-    <div class="cat-header">
-      <span class="cat-num">01</span>
-      <span class="cat-title">Luxury &amp; Jewelry</span>
-      <span class="cat-count">3 videos</span>
-    </div>
-    <div class="videos-row">
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="M_XeRWaEGOc" onclick="playVideo(this)">
-              <img src="./images/CharlieAndCo1BilloThumbnail.png" alt="Charlie and Co">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">01</div>
-          <div class="card-desc-type">Storytelling · Voiceover</div>
-          <div class="card-desc-text">Mother's Day gift narrative. Emotional hook paired with cinematic jewelry close-ups.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="Ta85sLuFuQ4" onclick="playVideo(this)">
-              <img src="./images/CharlieAndCo2BilloThumbnail.png" alt="Charlie and Co 2">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">02</div>
-          <div class="card-desc-type">Storytelling · Voiceover</div>
-          <div class="card-desc-text">Cross pendant showcase. Cinematic close-ups, voiceover storytelling, warm lighting.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="8MirVcTTu9s" onclick="playVideo(this)">
-              <img src="./images/Pelvini1BilloThumbnail.png" alt="Pelvini">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">03</div>
-          <div class="card-desc-type">Lifestyle · On-Camera</div>
-          <div class="card-desc-text">Full body luxury accessories showcase. Chain, watch, and bracelet styling with ambient lighting.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FASHION -->
-  <div class="cat-section">
-    <div class="cat-header">
-      <span class="cat-num">02</span>
-      <span class="cat-title">Fashion</span>
-      <span class="cat-count">3 videos</span>
-    </div>
-    <div class="videos-row">
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="zZY0l0UFhfw" onclick="playVideo(this)">
-              <img src="./images/Sunglasses1BilloThumbnail.png" alt="SA106 Meta">
-              <div class="video-amazon-badge">Live on Amazon ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">04</div>
-          <div class="card-desc-type">Lifestyle · On-Camera</div>
-          <div class="card-desc-text">Outdoor fashion shoot. Natural light, brick wall, full outfit showcase with eyewear hero.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="POeb_zM4HNE" onclick="playVideo(this)">
-              <img src="./images/Vinted1BilloThumbnail.png" alt="Vinted">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">05</div>
-          <div class="card-desc-type">Lifestyle · On-Camera</div>
-          <div class="card-desc-text">App lifestyle content showcasing the Vinted marketplace, direct to camera delivery.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="oQteXn31czg" onclick="playVideo(this)">
-              <img src="./images/Vinted2BilloThumbnail.png" alt="Vinted">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">06</div>
-          <div class="card-desc-type">Screen Masking · Spanish</div>
-          <div class="card-desc-text">App walkthrough in Spanish with screen masking. Talking head + live app demo.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOD -->
-  <div class="cat-section">
-    <div class="cat-header">
-      <span class="cat-num">03</span>
-      <span class="cat-title">Food</span>
-      <span class="cat-count">2 videos</span>
-    </div>
-    <div class="videos-row">
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="wKU0fu3AETk" onclick="playVideo(this)">
-              <img src="./images/Natura2BilloThumbnail.png" alt="Naturas">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">07</div>
-          <div class="card-desc-type">Comedy · Storytelling</div>
-          <div class="card-desc-text">Latina mom concept. Viral format, bilingual captions, natural kitchen environment.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="mFkh5W0BaNQ" onclick="playVideo(this)">
-              <img src="./images/Natura1BilloThumbnail.png" alt="Naturas 2">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">08</div>
-          <div class="card-desc-type">Lifestyle · Kitchen</div>
-          <div class="card-desc-text">Cooking with product. Casual lifestyle format, wide kitchen shot, product integrated naturally.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- LIFESTYLE & GROOMING -->
-  <div class="cat-section">
-    <div class="cat-header">
-      <span class="cat-num">04</span>
-      <span class="cat-title">Lifestyle &amp; Grooming</span>
-      <span class="cat-count">4 videos</span>
-    </div>
-    <div class="videos-row">
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="NWK43vzy35E" onclick="playVideo(this)">
-              <img src="./images/MondaySurf1BilloThumbnail.png" alt="Monday Surf">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">09</div>
-          <div class="card-desc-type">Unboxing · Talking Head</div>
-          <div class="card-desc-text">High energy product reveal. Low angle selfie, product front and center, genuine reaction.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="3QPYM9b-OdA" onclick="playVideo(this)">
-              <img src="./images/OliWorksMeteorite1BilloThumbnail.png" alt="OliWorks">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">10</div>
-          <div class="card-desc-type">Product Demo · Talking Head</div>
-          <div class="card-desc-text">Premium razor close-up demo. Product detail shots, on-camera talking head.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="lviGT1OySXU" onclick="playVideo(this)">
-              <img src="./images/HiLifeSoona1Thumbnail.png" alt="HiLife">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">11</div>
-          <div class="card-desc-type">Product Demo · In-Store</div>
-          <div class="card-desc-text">In-store product discovery for a portable garment steamer. Genuine reaction, retail aisle setting.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="DY3VzWZH_c4" onclick="playVideo(this)">
-              <img src="./images/BoxBotl1Thumbnail.jpeg" alt="BoxBotl">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">12</div>
-          <div class="card-desc-type">Unboxing · Lifestyle</div>
-          <div class="card-desc-text">Unboxing and lifestyle content for the world's first square tumbler, featuring the BoxStraw™, leak-proof demo, and outdoor lifestyle shots.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TECH -->
-  <div class="cat-section">
-    <div class="cat-header">
-      <span class="cat-num">05</span>
-      <span class="cat-title">Tech &amp; Automotive</span>
-      <span class="cat-count">2 videos</span>
-    </div>
-    <div class="videos-row">
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="J5_0hTdLpRc" onclick="playVideo(this)">
-              <img src="./images/NOCO1BilloThumbnail.png" alt="NOCO">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">13</div>
-          <div class="card-desc-type">Product Demo · Storytelling</div>
-          <div class="card-desc-text">Personal hook — "this is my lifesaver." Unboxing, real vehicle demo, feature walkthrough.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="Gum5ziP2kwU" onclick="playVideo(this)">
-              <img src="./images/BatteryTenderBillo1Thumbnail.png" alt="Battery Tender">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">14</div>
-          <div class="card-desc-type">Product Demo · Outdoor</div>
-          <div class="card-desc-text">Real engine bay product demo. Battery charger connected to truck, clamps visible, authentic outdoor shoot.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- OTHER -->
-  <div class="cat-section">
-    <div class="cat-header">
-      <span class="cat-num">06</span>
-      <span class="cat-title">Professional Talking Heads</span>
-      <span class="cat-count">6 videos</span>
-    </div>
-    <div class="videos-row">
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="MlJPgQ_M13Y" onclick="playVideo(this)">
-              <img src="./images/ADA1BilloThumbnail.png" alt="ADA Legal">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">15</div>
-          <div class="card-desc-type">Talking Head · Spanish</div>
-          <div class="card-desc-text">Professional legal services ad in Spanish. Scripted content, clean delivery, B-roll cut-ins.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="nLreFd4WWK4" onclick="playVideo(this)">
-              <img src="./images/OneParkFinancial1BilloThumbnail.png" alt="One Park Financial">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">16</div>
-          <div class="card-desc-type">Talking Head · English</div>
-          <div class="card-desc-text">Professional talking head in black suit. World map background, confident delivery, direct to camera.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="fC2J62vOTOk" onclick="playVideo(this)">
-              <img src="./images/OneParkFinancial2BilloThumbnail.png" alt="One Park Financial">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">17</div>
-          <div class="card-desc-type">Talking Head · English</div>
-          <div class="card-desc-text">Fireplace and stone wall set. Two finger hook, structured script delivery.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="22RR3g5sz_8" onclick="playVideo(this)">
-              <img src="./images/OneParkFinancial3BilloThumbnail.png" alt="One Park Financial">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">18</div>
-          <div class="card-desc-type">Talking Head · English</div>
-          <div class="card-desc-text">Full world map background, open hands, natural conversational delivery.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="-e7YHQHTxhw" onclick="playVideo(this)">
-              <img src="./images/OneParkFinancial4BilloThumbnail.png" alt="One Park Financial">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">19</div>
-          <div class="card-desc-type">Talking Head · English</div>
-          <div class="card-desc-text">Home studio setup with Inspire frame. Warm, approachable energy, direct hook to camera.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="tia5h7c9tqk" onclick="playVideo(this)">
-              <img src="./images/SplitPay1BilloThumbnail.jpeg" alt="SplitPay">
-              <div class="video-repost-badge">Reposted ✓</div>
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">20</div>
-          <div class="card-desc-type">Talking Head · English</div>
-          <div class="card-desc-text">World Cup themed talking head for a rent-splitting app. Casual home setup, direct hook to camera.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- HEALTH & WELLNESS -->
-  <div class="cat-section">
-    <div class="cat-header">
-      <span class="cat-num">07</span>
-      <span class="cat-title">Health &amp; Wellness</span>
-      <span class="cat-count">3 videos</span>
-    </div>
-    <div class="videos-row">
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="FagVZW0UPmo" onclick="playVideo(this)">
-              <img src="./images/RidgeCrest1BilloThumbnail.jpeg" alt="RidgeCrest Herbals">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">21</div>
-          <div class="card-desc-type">Testimonial · English</div>
-          <div class="card-desc-text">UGC video for RidgeCrest Herbals' Clear Lungs Extra Strength herbal formula. Authentic testimonial format.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="7aEFoevUFCE" onclick="playVideo(this)">
-              <img src="./images/Upright1BilloThumbnail.jpeg" alt="Upright">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">22</div>
-          <div class="card-desc-type">Testimonial · Spanish</div>
-          <div class="card-desc-text">Spanish-language UGC video for Upright's smart posture trainer. Testimonial + product demo format.</div>
-        </div>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <div class="phone-frame"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="video-facade" data-video-id="rQLfRpbA5XI" onclick="playVideo(this)">
-              <img src="./images/Planfit1BilloThumbnail.jpeg" alt="Planfit">
-              <div class="video-play-btn">▶</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-desc">
-          <div class="card-desc-num">23</div>
-          <div class="card-desc-type">Transformation · English</div>
-          <div class="card-desc-text">Transformation story UGC for Planfit's AI-powered gym coaching app. Before/after format with in-gym product demo.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BRANDS -->
-  <div class="mini-label" style="margin-bottom:16px;">All Brands</div>
-  <div class="brands-grid">
-    <div class="brand-card"><div class="brand-name">Charlie &amp; Co.</div><div class="brand-cat">Luxury Jewelry</div><div class="brand-repost">Reposted ✓</div></div>
-    <div class="brand-card"><div class="brand-name">Natura's</div><div class="brand-cat">Food &amp; Beverage</div><div class="brand-repost">Reposted ✓</div></div>
-    <div class="brand-card"><div class="brand-name">Monday Surf</div><div class="brand-cat">Grooming · Lifestyle</div><div class="brand-repost">Reposted ✓</div></div>
-    <div class="brand-card"><div class="brand-name">NOCO</div><div class="brand-cat">Tech · Automotive</div><div class="brand-repost">Reposted ✓</div></div>
-    <div class="brand-card"><div class="brand-name">SA106 Meta</div><div class="brand-cat">Fashion · Eyewear</div><div class="brand-repost">Live on Amazon ✓</div></div>
-    <div class="brand-card"><div class="brand-name">Vinted</div><div class="brand-cat">Fashion · App</div><div class="brand-repost">&nbsp;</div></div>
-    <div class="brand-card"><div class="brand-name">OliWorks</div><div class="brand-cat">Grooming · Razors</div><div class="brand-repost">&nbsp;</div></div>
-    <div class="brand-card"><div class="brand-name">ADA Legal</div><div class="brand-cat">Legal Services</div><div class="brand-repost">&nbsp;</div></div>
-    <div class="brand-card"><div class="brand-name">One Park Financial</div><div class="brand-cat">Financial Services</div><div class="brand-repost">&nbsp;</div></div>
-    <div class="brand-card"><div class="brand-name">Pelvini</div><div class="brand-cat">Luxury · Jewelry</div><div class="brand-repost">&nbsp;</div></div>
-    <div class="brand-card"><div class="brand-name">HiLife</div><div class="brand-cat">Home · Appliances</div><div class="brand-repost">Reposted ✓</div></div>
-    <div class="brand-card"><div class="brand-name">Battery Tender</div><div class="brand-cat">Tech · Automotive</div><div class="brand-repost">&nbsp;</div></div>
-    <div class="brand-card"><div class="brand-name">BoxBotl</div><div class="brand-cat">Drinkware · Lifestyle</div><div class="brand-repost">Reposted ✓</div></div>
-    <div class="brand-card"><div class="brand-name">SplitPay</div><div class="brand-cat">Finance · App</div><div class="brand-repost">Reposted ✓</div></div>
-    <div class="brand-card"><div class="brand-name">RidgeCrest Herbals</div><div class="brand-cat">Health · Wellness</div><div class="brand-repost">&nbsp;</div></div>
-    <div class="brand-card"><div class="brand-name">Upright</div><div class="brand-cat">Health · Tech</div><div class="brand-repost">&nbsp;</div></div>
-    <div class="brand-card"><div class="brand-name">Planfit</div><div class="brand-cat">Fitness · App</div><div class="brand-repost">&nbsp;</div></div>
-  </div>
-</section>
-
-<!-- GEAR -->
-<section class="section">
-  <div class="sec-eyebrow">03 — Setup</div>
-  <h2 class="sec-title">Production <em>Gear</em></h2>
-  <div class="gear-grid">
-    <div class="gear-card"><div class="gear-n">01</div><div><div class="gear-name">Sony ZV-1</div><div class="gear-desc">Cinematic footage · Manual exposure · Cine2 · 1080p 60fps</div></div></div>
-    <div class="gear-card"><div class="gear-n">02</div><div><div class="gear-name">iPhone 16 Pro</div><div class="gear-desc">4K video · Cinematic mode · Primary UGC filming</div></div></div>
-    <div class="gear-card"><div class="gear-n">03</div><div><div class="gear-name">Dracast DRX1000RGB</div><div class="gear-desc">Professional RGB panel · Full color control · Studio quality</div></div></div>
-    <div class="gear-card"><div class="gear-n">04</div><div><div class="gear-name">GreatLPT Tubes ×2</div><div class="gear-desc">RGB tubes for rim, accent, and cinematic background lighting</div></div></div>
-    <div class="gear-card"><div class="gear-n">05</div><div><div class="gear-name">Adobe Premiere Pro</div><div class="gear-desc">Professional editing · Color grading · Motion graphics</div></div></div>
-    <div class="gear-card"><div class="gear-n">06</div><div><div class="gear-name">AI Toolkit</div><div class="gear-desc">Sora · Midjourney · Krea · ElevenLabs · AI-enhanced production</div></div></div>
-    <div class="gear-card"><div class="gear-n">07</div><div><div class="gear-name">3 Dedicated Sets</div><div class="gear-desc">Fashion gallery wall · Kitchen island · Creative studio — all professionally lit</div></div></div>
-    <div class="gear-card"><div class="gear-n">08</div><div><div class="gear-name">Adobe Photoshop</div><div class="gear-desc">Photo editing · Product retouching · Thumbnail creation</div></div></div>
-  </div>
-</section>
-
-
-<!-- CONTACT -->
-<div class="contact-section">
-  <div class="contact-top">
-    <div>
-      <div class="sec-eyebrow" style="color:var(--rust);">04 — Contact</div>
-      <h2 class="contact-headline">Let's work<br><em>together</em></h2>
-      <p class="contact-sub">Available for brand collaborations and UGC campaigns. Fast turnaround, professional delivery, bilingual content in English and Spanish.</p>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:spinachfilms@gmail.com" class="contact-link"><div class="cl-label">Email</div><div class="cl-value">spinachfilms@gmail.com</div></a>
-      <a href="https://www.tiktok.com/@Espinaaca" target="_blank" class="contact-link"><div class="cl-label">TikTok</div><div class="cl-value">@Espinaaca</div></a>
-      <div class="contact-link"><div class="cl-label">Languages</div><div class="cl-value">English · Español</div></div>
-      <div class="contact-link"><div class="cl-label">Location</div><div class="cl-value">Tennessee, US · Remote Worldwide</div></div>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <span class="footer-brand">PAULO LOYO</span>
-  <span class="footer-copy">UGC Creator · Video Producer · 2025</span>
-</footer>
-
-</div>
+</dialog>
 
 <script>
-function playVideo(el) {
-  const vid = el.getAttribute('data-video-id');
-  const iframe = document.createElement('iframe');
-  iframe.src = `https://www.youtube.com/embed/${vid}?modestbranding=1&autoplay=1`;
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.borderRadius = '24px';
-  iframe.setAttribute('frameborder', '0');
-  iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-  iframe.setAttribute('allowfullscreen', '');
-  el.replaceWith(iframe);
-}
+(function() {
+  var root = document.documentElement;
+  var stored = localStorage.getItem('theme');
+  var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  root.setAttribute('data-theme', theme);
+  var btn = document.getElementById('theme-toggle');
+  function syncBtn() {
+    btn.textContent = root.getAttribute('data-theme') === 'light' ? 'Dark mode' : 'Light mode';
+  }
+  syncBtn();
+  btn.addEventListener('click', function() {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    syncBtn();
+  });
+})();
+
+(function() {
+  var buttons = document.querySelectorAll('.lang-toggle button');
+  var cards = document.querySelectorAll('.phone-card');
+  buttons.forEach(function(b) {
+    b.addEventListener('click', function() {
+      buttons.forEach(function(o) { o.setAttribute('aria-pressed', 'false'); });
+      b.setAttribute('aria-pressed', 'true');
+      var lang = b.getAttribute('data-lang');
+      cards.forEach(function(c) {
+        c.style.display = (lang === 'en' || c.getAttribute('data-lang') === lang) ? '' : 'none';
+      });
+    });
+  });
+})();
+
+(function() {
+  var sections = document.querySelectorAll('.section, .bilingual-section, .hero');
+  if (!('IntersectionObserver' in window)) return;
+  sections.forEach(function(s) { s.classList.add('fade-up'); });
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+  sections.forEach(function(s) { io.observe(s); });
+})();
+
+(function() {
+  var modal = document.getElementById('video-modal');
+  var embed = document.getElementById('video-embed');
+  var closeBtn = document.getElementById('modal-close-btn');
+  var lastFocused = null;
+
+  function openModal(videoId, label) {
+    lastFocused = document.activeElement;
+    embed.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?modestbranding=1&autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="' + label + '"></iframe>';
+    modal.showModal();
+    closeBtn.focus();
+  }
+  function closeModal() {
+    modal.close();
+    embed.innerHTML = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.video-card-btn').forEach(function(b) {
+    b.addEventListener('click', function() {
+      openModal(b.getAttribute('data-video-id'), b.getAttribute('aria-label'));
+    });
+  });
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('cancel', function(e) { e.preventDefault(); closeModal(); });
+  modal.addEventListener('click', function(e) {
+    var rect = modal.getBoundingClientRect();
+    var inDialog = rect.top <= e.clientY && e.clientY <= rect.top + rect.height && rect.left <= e.clientX && e.clientX <= rect.left + rect.width;
+    if (!inDialog) closeModal();
+  });
+  modal.addEventListener('keydown', function(e) {
+    if (e.key !== 'Tab') return;
+    var focusables = modal.querySelectorAll('button, a, iframe');
+    if (!focusables.length) return;
+    var first = focusables[0], last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+})();
 </script>
 </body>
 </html>
