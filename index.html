@@ -179,9 +179,10 @@ html:not([data-theme="light"]) .bilingual-section { background:#1A1506; }
 .cat-num { font-size:13px; color:var(--amber); letter-spacing:1px; }
 .cat-title { font-size:20px; font-weight:600; letter-spacing:-0.3px; }
 .cat-count { font-size:11px; color:var(--text-muted); margin-left:auto; }
-.videos-row { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-@media (max-width:768px) { .videos-row { grid-template-columns:1fr; } }
-@media (max-width:1024px) and (min-width:769px) { .videos-row { grid-template-columns:repeat(2,1fr); } }
+.videos-row { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+@media (max-width:768px) { .videos-row { grid-template-columns:repeat(2,1fr); gap:12px; } }
+@media (max-width:480px) { .videos-row { grid-template-columns:1fr; } }
+@media (max-width:1024px) and (min-width:769px) { .videos-row { grid-template-columns:repeat(3,1fr); } }
 
 .phone-card { display:flex; flex-direction:column; gap:14px; }
 .video-card-btn {
