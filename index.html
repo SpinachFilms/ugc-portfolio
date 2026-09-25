@@ -307,11 +307,12 @@ a { color:inherit; }
 .contact-headline em { font-family:'DM Serif Display',serif; font-style:italic; color:var(--bronze); }
 .contact-sub { font-size:16px; color:var(--text-muted); max-width:520px; line-height:1.7; margin-bottom:12px; }
 .contact-mailto-btn {
-  display:block; text-align:center; padding:26px 48px;
+  display:block; text-align:center; padding:26px 32px;
   background:var(--amber); color:var(--ink);
-  font-size:22px; font-weight:700;
+  font-size:clamp(15px,3.5vw,22px); font-weight:700;
   border-radius:10px; text-decoration:none; margin:40px auto 10px;
   max-width:520px; transition:opacity 0.15s; letter-spacing:-0.3px;
+  overflow-wrap:break-word; word-break:break-all;
 }
 .contact-mailto-btn:hover,.contact-mailto-btn:focus-visible { opacity:0.88; }
 .contact-reply-note { text-align:center; font-size:13px; color:var(--text-muted); margin-bottom:52px; }
@@ -381,7 +382,7 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
         </dl>
         <div class="hero-ctas">
           <a href="#contact" class="btn-primary">Hire Me →</a>
-          <a href="#featured" class="btn-secondary">▶ Watch the work</a>
+          <a href="#featured" class="btn-secondary">Watch the work</a>
         </div>
       </div>
       <div class="cover-photo">
