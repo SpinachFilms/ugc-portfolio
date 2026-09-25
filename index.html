@@ -189,7 +189,7 @@ a { color:inherit; }
 .card-desc-text { font-size:12px; color:var(--text-muted); line-height:1.6; }
 
 /* ─── RESULTS ─── */
-.results-bar { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:40px; }
+.results-bar { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:40px; }
 @media (max-width:768px) { .results-bar { grid-template-columns:repeat(2,1fr); } }
 .result-cell { background:var(--surface); padding:28px 16px; text-align:center; }
 .result-num { font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--amber); font-family:'Inter',sans-serif; line-height:1; }
@@ -373,13 +373,9 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
     <h2 id="featured-heading" class="sec-title">The work that <em>converts.</em></h2>
     <p class="sec-sub">Active Meta ads, brand reposts, and Amazon-live content — proof these videos do more than look good.</p>
 
-    <!-- SHOWREEL PLACEHOLDER -->
-    <div class="showreel-wrap" role="figure" aria-label="Showreel video (coming soon)">
-      <div class="showreel-placeholder">
-        <span class="todo">TODO</span>
-        <p><strong>60–90 second showreel goes here.</strong><br>Replace this block with a YouTube embed or hosted video.<br>See POST_DEPLOY_CHECKLIST.md for instructions.</p>
-      </div>
-    </div>
+    <!-- SHOWREEL — embed goes here when ready
+         Replace this comment with a <video> or <iframe> tag.
+         See POST_DEPLOY_CHECKLIST.md §1 for instructions. -->
 
     <!-- 12 FEATURED CARDS -->
     <div class="featured-grid">
@@ -538,6 +534,7 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
         <div class="result-num">56</div>
         <div class="result-label">Brand<br>collabs</div>
       </div>
+      <!-- UNVERIFIED STATS — restore once confirmed
       <div class="result-cell" role="listitem">
         <div class="result-num">16</div>
         <div class="result-label">Videos running as<br>paid Meta Ads</div>
@@ -550,10 +547,10 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
         <div class="result-num">4</div>
         <div class="result-label">Products live on<br>Amazon</div>
       </div>
+      END UNVERIFIED STATS -->
     </div>
     <div class="perf-note" role="note">
       <strong>Performance metrics</strong> — Views, CTR, ROAS, and engagement data available on request.<br>
-      <span style="opacity:0.7;font-size:11px;"><!-- TODO: Add specific campaign results here once available --></span>
     </div>
   </section>
 
@@ -1315,14 +1312,15 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
       <div class="pkg-card">
         <div class="pkg-tier">Starter</div>
         <div class="pkg-name">Single UGC Video</div>
-        <div class="pkg-price"><span class="todo-tag">TODO</span></div>
-        <div class="pkg-price-note">[PRICE] — add your rate</div>
+        <div class="pkg-price">$150</div>
+        <div class="pkg-price-note">per video</div>
         <ul class="pkg-features">
           <li>1 final video (vertical, 9:16)</li>
           <li>English or Spanish</li>
           <li>2 revisions included</li>
           <li>Raw footage available on request</li>
-          <li>Turnaround: <strong>[X] business days</strong></li>
+          <li>30 days organic use included; extended/paid usage rights at $230/mo, quoted separately</li>
+          <li>Turnaround: 3 business days — 5 once your product arrives</li>
         </ul>
         <a href="#contact" class="pkg-cta">Get in touch</a>
       </div>
@@ -1330,15 +1328,15 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
       <div class="pkg-card featured">
         <div class="pkg-tier">Best Value</div>
         <div class="pkg-name">3-Hook Variation Pack</div>
-        <div class="pkg-price"><span class="todo-tag">TODO</span></div>
-        <div class="pkg-price-note">[PRICE] — add your rate</div>
+        <div class="pkg-price">$350</div>
+        <div class="pkg-price-note">3 videos</div>
         <ul class="pkg-features">
           <li>3 videos — same product, 3 different hooks</li>
           <li>English and/or Spanish</li>
           <li>Ideal for A/B testing Meta &amp; TikTok ads</li>
           <li>3 revisions per video</li>
-          <li>Usage rights: <strong>[USAGE TERMS]</strong></li>
-          <li>Turnaround: <strong>[X] business days</strong></li>
+          <li>30 days organic use included; extended/paid usage rights at $230/mo, quoted separately</li>
+          <li>Turnaround: 3 business days — 5 once your product arrives</li>
         </ul>
         <a href="#contact" class="pkg-cta">Get in touch</a>
       </div>
@@ -1346,24 +1344,24 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
       <div class="pkg-card">
         <div class="pkg-tier">Ongoing</div>
         <div class="pkg-name">Monthly Retainer</div>
-        <div class="pkg-price"><span class="todo-tag">TODO</span></div>
-        <div class="pkg-price-note">[PRICE/month] — add your rate</div>
+        <div class="pkg-price">$800</div>
+        <div class="pkg-price-note">per month · 12 videos</div>
         <ul class="pkg-features">
-          <li>[X] videos per month</li>
+          <li>12 videos per month</li>
           <li>Priority turnaround</li>
           <li>English and Spanish included</li>
           <li>Dedicated Slack/WhatsApp channel</li>
           <li>Unlimited revisions</li>
-          <li>Usage rights: <strong>[USAGE TERMS]</strong></li>
+          <li>30 days organic use included; extended/paid usage rights at $230/mo, quoted separately</li>
         </ul>
         <a href="#contact" class="pkg-cta">Get in touch</a>
       </div>
 
     </div>
-    <p class="pkg-note">All rates listed exclude usage rights and paid media whitelisting, which are quoted separately. <span class="todo-tag">TODO</span> — replace all [PRICE] and [USAGE TERMS] placeholders.</p>
+    <p class="pkg-note">30 days organic use is included with every package. Extended usage rights and paid media whitelisting beyond that are available at $230/month, quoted separately.</p>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- TESTIMONIALS — restore when quotes ready
   <section class="section fade-up" aria-labelledby="testi-heading">
     <div class="sec-eyebrow">Social Proof</div>
     <h2 id="testi-heading" class="sec-title">What brands <em>say.</em></h2>
@@ -1392,7 +1390,7 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
       </div>
 
     </div>
-  </section>
+  END TESTIMONIALS -->
 
   <!-- ABOUT -->
   <section class="section fade-up" id="about" aria-labelledby="about-heading">
@@ -1416,7 +1414,7 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
         </div>
         <div>
           <div class="mini-label">Audience</div>
-          <p class="info-list">US-based · Ages 18–34<br><strong>Strong Latino &amp; Hispanic segment</strong><br>Ideal for brands targeting English and Spanish-speaking markets</p>
+          <p class="info-list">US-based · Ages 21–45 · <strong>Strong Latino &amp; Hispanic segment</strong> · Ideal for brands targeting English and Spanish-speaking markets</p>
         </div>
         <div>
           <div class="mini-label">Rate Card</div>
