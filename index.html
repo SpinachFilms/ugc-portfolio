@@ -170,6 +170,32 @@ a { color:inherit; }
   box-shadow:0 0 0 1px var(--amber), 0 8px 32px rgba(212,168,67,0.22);
 }
 
+/* ─── CLIENT SPOTLIGHT ─── */
+.spotlight-section {
+  background:#171310; color:#F6F5F1;
+  margin:0 -32px; padding:72px 32px;
+  border-top:none; border-bottom:none;
+}
+.spotlight-section .sec-eyebrow { color:var(--amber); }
+.spotlight-section .sec-title { color:#F6F5F1; }
+.spotlight-section .sec-title em { color:var(--amber); font-family:'DM Serif Display',serif; font-style:italic; }
+.spotlight-section .sec-sub { color:rgba(246,245,241,0.6); margin-bottom:40px; }
+.spotlight-section .card-desc-type { color:var(--amber); }
+.spotlight-section .card-desc-text { color:rgba(246,245,241,0.55); }
+.spotlight-section .card-desc-num { color:rgba(246,245,241,0.35); }
+.spotlight-section .video-card-btn { border-color:rgba(246,245,241,0.1); background:#1F1A16; }
+.spotlight-section .video-card-btn:hover,
+.spotlight-section .video-card-btn:focus-visible {
+  border-color:var(--amber);
+  box-shadow:0 0 0 1px var(--amber), 0 8px 32px rgba(212,168,67,0.22);
+}
+.spotlight-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+@media (max-width:768px) { .spotlight-grid { grid-template-columns:1fr; gap:12px; } }
+.spotlight-credit {
+  font-size:11px; color:rgba(246,245,241,0.4); text-align:center;
+  margin-top:36px; letter-spacing:0.5px;
+}
+
 /* ─── VIDEO CARDS (shared) ─── */
 .phone-card { display:flex; flex-direction:column; gap:14px; }
 .video-card-btn {
@@ -389,6 +415,53 @@ footer { padding:32px 0 56px; display:flex; justify-content:space-between; font-
         <img src="./images/Cover_selfie.jpg" alt="Paulo Loyo, bilingual UGC creator and video producer" width="600" height="800" loading="eager">
       </div>
     </div>
+  </section>
+
+  <!-- McDONALD'S CLIENT SPOTLIGHT -->
+  <!-- ⚑ BRAND FLAG: "McDonald's" named below — confirm portfolio use is OK before publishing -->
+  <section class="section spotlight-section fade-up" aria-labelledby="spotlight-heading">
+    <div class="sec-eyebrow">Client Spotlight</div>
+    <h2 id="spotlight-heading" class="sec-title">McDonald's, <em>told three ways.</em></h2>
+    <p class="sec-sub">Three shoots, one campaign — made to feel like a memory, not an ad.</p>
+
+    <div class="spotlight-grid">
+
+      <div class="phone-card">
+        <button type="button" class="video-card-btn" role="button" aria-label="Play: McDonald's — The order that takes me home" data-video-id="f9L5R4jCWWo">
+          <img src="./images/McDsHomeOrderThumbnail.png" alt="McDonald's — The order that takes me home" width="360" height="640" loading="lazy">
+          <span class="video-play-btn" aria-hidden="true">▶</span>
+        </button>
+        <div class="card-desc">
+          <div class="card-desc-head"><span class="card-desc-type">McDonald's · Nostalgia</span></div>
+          <p class="card-desc-text">The order that takes me home</p>
+        </div>
+      </div>
+
+      <div class="phone-card">
+        <button type="button" class="video-card-btn" role="button" aria-label="Play: McDonald's — It was never just a birthday concept" data-video-id="3x7tti5X8XM">
+          <img src="./images/McDsBirthdayConceptThumbnail.png" alt="McDonald's — It was never just a birthday concept" width="360" height="640" loading="lazy">
+          <span class="video-play-btn" aria-hidden="true">▶</span>
+        </button>
+        <div class="card-desc">
+          <div class="card-desc-head"><span class="card-desc-type">McDonald's · Storytelling</span></div>
+          <p class="card-desc-text">It was never just a birthday concept</p>
+        </div>
+      </div>
+
+      <div class="phone-card">
+        <button type="button" class="video-card-btn" role="button" aria-label="Play: McDonald's — Things only my familia would understand" data-video-id="pJm0fGHYrtU">
+          <img src="./images/McDsFamiliaThumbnail.png" alt="McDonald's — Things only my familia would understand" width="360" height="640" loading="lazy">
+          <span class="video-play-btn" aria-hidden="true">▶</span>
+        </button>
+        <div class="card-desc">
+          <div class="card-desc-head"><span class="card-desc-type">McDonald's · Culture</span></div>
+          <p class="card-desc-text">Things only my familia would understand</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="spotlight-credit">Created for McDonald's via Davis Elen Advertising — commissioned through Cohley.</p>
   </section>
 
   <!-- FEATURED WORK -->
